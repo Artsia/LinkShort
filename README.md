@@ -1,3 +1,3 @@
 # LinkShort
 
-Link : https://short-url1.netlify.app/
+Live Link : https://short-url1.netlify.app/
