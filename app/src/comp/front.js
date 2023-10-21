@@ -1,7 +1,7 @@
 
 import './front.css';
 //const axios = require('axios');
-import axios from 'axios';
+//import axios from 'axios';
 const tokenKey = "";
 let longURL = '';
 let shortURL = '';
@@ -12,21 +12,21 @@ let btnId = document.getElementById('btn');
 
 function Front() {
     return (
-        <div>
+        <div class="body">
             <header>
                 {/*Green header with 10vh , w = 100% with logo*/}
-                <p id="logo">ShortURLs</p>
+                <p id="logo">Tiny URL</p>
             </header>
 
             <div class="main">
 
-                <h2>Shortten URL</h2>
-                <h3>No Login Required</h3>
+                <h2>URL Shortner</h2>
+               
                 <h4>Enter long URL</h4>
 
                 <input type="textField" id="txtField" placeholder="Enter..." />
 
-                <h4>Truncated URL Result</h4>
+                <h4>Truncated URL Result Below</h4>
 
                 <p id="truncResult"></p>
 
