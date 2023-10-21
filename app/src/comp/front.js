@@ -1,68 +1,52 @@
-
+import React, { useState } from 'react';
+import axios from 'axios';
 import './front.css';
-//const axios = require('axios');
-//import axios from 'axios';
-const tokenKey = "";
-let longURL = '';
-let shortURL = '';
 
-let txtFieldId = document.getElementById('txtField');
-let truncResultId = document.getElementById('truncResult');
-let btnId = document.getElementById('btn');
+
 
 function Front() {
+    const [longURL, setLongURL] = useState('');
+    const [shortURL, setShortURL] = useState('');
+
+    const truncateURL = () => {
+        axios
+            .get(`https://tinyurl.com/api-create.php?url=${longURL}`, {
+                headers: {
+                    'Authorization': `Bearer ${tokenKey}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((response) => {
+                setShortURL(response.data);
+            })
+            .catch((error) => {
+                console.error(error);
+                // Handle error here
+            });
+    };
+
     return (
-        <div class="body">
+        <div className="body">
             <header>
-                {/*Green header with 10vh , w = 100% with logo*/}
                 <p id="logo">Tiny URL</p>
             </header>
 
-            <div class="main">
-
-                <h2>URL Shortner</h2>
-               
-                <h4>Enter long URL</h4>
-
-                <input type="textField" id="txtField" placeholder="Enter..." />
-
+            <div className="main">
+                <h2>URL Shortener</h2>
+                
+                <input
+                    type="text"
+                    placeholder="Enter..."
+                    value={longURL}
+                    onChange={(e) => setLongURL(e.target.value)}
+                />
                 <h4>Truncated URL Result Below</h4>
-
-                <p id="truncResult"></p>
-
-                <button id="btn" onclick="result()">Convert</button>
-
+                <p>{shortURL}</p>
+                {/**remoning the () from truncateURL ensures that the code is executed only if the user clicks on th button */}
+                <button id='btn' onClick={truncateURL}>Convert</button>
             </div>
-
         </div>
     );
 }
-
-
-
-/*Uses the Axios API
-function truncateURL() {
-
-    longURL = txtFieldId.value;
-
-    axios.get(`https://tinyurl.com/api-create.php?url=${longURL}`, {
-        headers: {
-            'Authorization': `Bearer ${tokenKey}`,
-            'Content-Type': 'application/json'
-        }
-    }).then(response => {
-        shortURL = response;
-        truncResultId.textContent = shortURL;
-        console.log(shortURL);
-    })
-        .catch(error => {
-            console.error(error);
-            //url has to be accesible to public, you can use a service like Port Adress Translation(PAT) 
-            and Network Addresss Translation(NAT) to convert private IP address to public IP address.
-            Convert intranet IP address for your bussiness to accessible IP address that can be found on the internet.
-            these public Ip address can then be shortened.
-        });
-}
-*/
 
 export default Front;
