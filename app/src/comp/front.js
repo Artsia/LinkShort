@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './front.css';
 
-
+const tokenKey = "";
 
 function Front() {
     const [longURL, setLongURL] = useState('');
