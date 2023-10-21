@@ -72,9 +72,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ## LinkShort
 
-Version 3 : https://linkshortnerv3.netlify.app/
-Version 2 : https://short-url12.netlify.app
-Version 1 : https://short-url1.netlify.app/
+- Version 3 : https://linkshortnerv3.netlify.app/
+- Version 2 : https://short-url12.netlify.app
+- Version 1 : https://short-url1.netlify.app/
 
 newwest version
 
